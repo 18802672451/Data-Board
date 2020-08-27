@@ -1,0 +1,370 @@
+/* 背景 盒子 代码 */
+body {
+  background: url(../images/bg.jpg);
+  background-size: cover;
+  /* 面板 : 边框背景图 */
+}
+body .panel {
+  border: 30px solid skyblue;
+  border-width: 52px 40px 22px 125px;
+  border-image: url(../images/border.png) 50 40 22 125 stretch;
+  box-sizing: border-box;
+  position: relative;
+}
+body .inner {
+  position: absolute;
+  top: -52px;
+  right: -40px;
+  bottom: -22px;
+  left: -125px;
+  padding: 20px 30px;
+}
+body .container {
+  background: url(../images/logo.png) no-repeat;
+  background-size: contain;
+  min-height: 100vh;
+  padding: 88px 20px 0;
+  display: flex;
+}
+body .container .column {
+  flex: 3;
+}
+body .container .column:nth-child(2) {
+  flex: 4;
+  padding: 0 20px;
+}
+body .container h3 {
+  font-size: 18px;
+  color: #fff;
+}
+/*                      第一列                   */
+.facility {
+  height: 108px;
+}
+.facility .item {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+.facility .item h3 {
+  margin: 10px 0;
+}
+.facility .item span {
+  color: #0952d8;
+}
+.fault {
+  height: 475px;
+  margin-top: 20px;
+}
+.fault .tab span {
+  color: #0952d8;
+  margin-right: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.fault .tab span:nth-child(2) {
+  padding-left: 20px;
+  border-left: 2px solid #00f2f1;
+}
+.fault .tab .active {
+  color: #fff;
+}
+.fault .carousel-view {
+  margin-top: 15px;
+  /* 底部轮播滚动区域 */
+}
+.fault .carousel-view .header {
+  height: 35px;
+  display: flex;
+  font-size: 14px;
+  margin: 15px -30px 10px;
+  padding-left: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.fault .carousel-view .header span {
+  flex: 25%;
+  color: #60c5e8;
+  line-height: 35px;
+}
+.fault .carousel-view .header span:nth-child(2) {
+  flex: 50%;
+}
+.fault .carousel-view .lunbo {
+  height: 350px;
+  position: relative;
+  /* 超出部分不可见 */
+  overflow: hidden;
+}
+.fault .carousel-view .carousel {
+  height: 350px;
+  position: absolute;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.fault .carousel-view .carousel .row {
+  height: 35px;
+  padding-left: 20px;
+  position: relative;
+  cursor: pointer;
+  color: #0952d8;
+}
+.fault .carousel-view .carousel .row span {
+  float: left;
+  width: 25%;
+  line-height: 35px;
+  font-size: 14px;
+}
+.fault .carousel-view .carousel .row span:nth-child(2) {
+  float: left;
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fault .carousel-view .carousel .row i {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+.fault .carousel-view .carousel .active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #00f2f1;
+}
+.fault .carousel-view .carousel .active i {
+  display: block;
+}
+.point {
+  height: 335px;
+  margin-top: 20px;
+}
+.point .chart .pie {
+  float: left;
+  width: 60%;
+  margin-top: 20px;
+  height: 238px;
+}
+.point .data {
+  float: left;
+  width: 40%;
+  height: 238px;
+  margin-top: 20px;
+  background: url(../images/rect.png) no-repeat;
+  background-size: 100% 100%;
+}
+.point .data .item {
+  height: 50%;
+  text-align: center;
+}
+.point .data .item h3 {
+  padding: 35px 0 10px;
+}
+.point .data .item span {
+  color: #0952d8;
+}
+/*                      第二列                   */
+.chart h3 {
+  padding-top: 35px;
+}
+.chart .map {
+  margin-top: 20px;
+  height: 525px;
+}
+.users {
+  height: 335px;
+  margin-top: 20px;
+}
+.users .chart {
+  margin-top: 20px;
+}
+.users .chart .bar {
+  height: 238px;
+  float: left;
+  width: 70%;
+}
+.users .chart .data {
+  height: 238px;
+  float: left;
+  width: 30%;
+  background: url(../images/rect.png) no-repeat;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.users .chart .data .item {
+  height: 50%;
+  text-align: center;
+}
+.users .chart .data .item h3 {
+  padding: 35px 0 10px;
+}
+.users .chart .data .item span {
+  color: #0952d8;
+}
+/*                      第三列                   */
+.order {
+  height: 145px;
+}
+.order .filter a {
+  margin-right: 18px;
+  color: #0952d8;
+  font-size: 14px;
+}
+.order .filter a:nth-child(n+2) {
+  padding-left: 18px;
+  border-left: 2px solid #00f2f1;
+}
+.order .filter .active {
+  color: #fff;
+}
+.order .data {
+  display: flex;
+}
+.order .data .item {
+  flex: 1;
+}
+.order .data .item h3 {
+  padding: 15px 0 10px;
+}
+.order .data .item span {
+  color: #0952d8;
+}
+.sales {
+  height: 245px;
+  margin-top: 20px;
+}
+.sales .header {
+  color: #fff;
+}
+.sales .header span {
+  font-size: 18px;
+  padding-right: 18px;
+  border-right: 2px solid #00f2f1;
+}
+.sales .header a {
+  color: #0bace6;
+  font-size: 16px;
+  margin: 0 15px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.sales .header .active {
+  color: #fff;
+  background-color: #4c9bfd;
+}
+.sales .chart {
+  margin-top: 20px;
+}
+.sales .chart .line {
+  height: 155px;
+}
+.wrap {
+  margin-top: 20px;
+  height: 230px;
+  display: flex;
+  /* 3.1 渠道分布 */
+  /* 3.2 销售进度 */
+}
+.wrap .channel {
+  flex: 48%;
+}
+.wrap .channel .data {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+.wrap .channel .data .item {
+  margin-top: 20px;
+  color: #4b82c8;
+}
+.wrap .channel .data .item h3 {
+  font-size: 25px;
+}
+.wrap .channel .data .item span {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.wrap .quarter {
+  flex: 48%;
+  margin-left: 4%;
+}
+.wrap .quarter .chart {
+  position: relative;
+}
+.wrap .quarter .chart .circle {
+  height: 80px;
+  margin: 10px 0;
+}
+.wrap .quarter .chart h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+}
+.wrap .quarter .data .item {
+  float: left;
+  width: 50%;
+}
+.wrap .quarter .data .item h3 {
+  margin-top: 10px;
+}
+.wrap .quarter .data .item span {
+  margin-top: 10px;
+  color: #4b82c8;
+  font-size: 12px;
+}
+.hot {
+  height: 280px;
+  margin-top: 20px;
+}
+.hot .state {
+  float: left;
+  width: 30%;
+}
+.hot .state ul {
+  margin-top: 20px;
+  color: #4b82c8;
+  font-size: 14px;
+}
+.hot .state ul li {
+  height: 65px;
+}
+.hot .state ul li span {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.hot .province {
+  float: left;
+  width: 70%;
+}
+.hot .province h3 span {
+  color: #4b82c8;
+  float: right;
+  font-size: 14px;
+  vertical-align: text-bottom;
+}
+.hot .province .cup {
+  float: left;
+  margin-top: 20px;
+  width: 50%;
+}
+.hot .province .cup li {
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+  color: #295693;
+  cursor: pointer;
+}
+.hot .province .cup li span {
+  padding-left: 12px;
+}
+.hot .province .cup li span:nth-child(2) {
+  float: right;
+}
+.hot .province .cup .active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #52ffff;
+}
+.hot .province .cup:nth-child(3) li {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #52ffff;
+}

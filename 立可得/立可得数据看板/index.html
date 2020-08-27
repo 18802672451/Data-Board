@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 导入初始化代码 -->
+    <link rel="stylesheet" href="../css/base.css">
+    <!-- 导入首页样式 css -->
+    <link rel="stylesheet" href="./index.css">
+    <!-- 导入字体图标 -->
+    <link rel="stylesheet" href="../fonts/icomoon.css">
+    <!-- 导包 -->
+    <script src="./jquery-1.12.4.js"></script>
+    <!-- 导入js -->
+    <script src="./index.js"></script>
+    <!-- 导入echarts -->
+    <script src="../js/echarts.js"></script>
+    <!-- 导入地图 -->
+    <script src="../js/china.js"></script>
+</head>
+
+<body>
+    <!-- 版心  -->
+    <div class="container">
+        <!-- 第一列 -->
+        <div class="column">
+            <!-- 1. 设备 -->
+            <div class="facility panel">
+                <div class="inner">
+                    <div class="item">
+                        <h3>2,190</h3>
+                        <span><i class="icon-dot" style="color: #006cff;"></i> 设备总数</span>
+                    </div>
+                    <div class="item">
+                        <h3>190</h3>
+                        <span><i class="icon-dot" style="color: #6acca3;"></i> 季度新增</span>
+                    </div>
+                    <div class="item">
+                        <h3>3,001</h3>
+                        <span><i class="icon-dot" style="color: #6acca3;"></i> 运营设备</span>
+                    </div>
+                    <div class="item">
+                        <h3>108</h3>
+                        <span><i class="icon-dot" style="color:#60020e"></i> 异常设备</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 2. 故障 -->
+            <div class="fault panel">
+                <div class="inner">
+                    <!-- 2.1 设备切换tab栏 -->
+                    <div class="tab">
+                        <span class="active">故障设备监控</span>
+                        <span>异常设备监控</span>
+                    </div>
+                    <!-- 2.2 设备信息 -->
+                    <div class="carousel-view">
+                        <!-- 2.2.1 故障信息头部 -->
+                        <div class="header">
+                            <span>故障时间</span>
+                            <span>设备地址</span>
+                            <span>异常代码</span>
+                        </div>
+                        <div class="lunbo">
+                            <!-- 2.2.2 轮播滚动区域 -->
+                            <div class="carousel">
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>1000003</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row active">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>1000004</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>1000005</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>1000006</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>1000007</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>1000008</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>1000009</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>10000010</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>10000011</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>10000012</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>10000013</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>10000014</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>10000015</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>10000016</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row ">
+                                    <span>20200819</span>
+                                    <span>广东省深圳市宝安区石岩街道松柏路创维工业园</span>
+                                    <span>10000017</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2.3 异常设备轮播图 -->
+                    <div class="carousel-view" style="display: none">
+                        <!-- 2.3.1 头部固定区域 -->
+                        <div class="header">
+                            <span>异常时间</span>
+                            <span>设备地址</span>
+                            <span>异常代码</span>
+                        </div>
+                        <!-- 2.3.2 轮播滚动区域 -->
+                        <div class="lunbo">
+                            <div class="carousel">
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                                <div class="row">
+                                    <span>20200815</span>
+                                    <span>广东省深圳市留仙二路中粮商务公园3栋1701</span>
+                                    <span>66666666668</span>
+                                    <i class="icon-dot" style="color: #34aaff"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3. 点位分布 -->
+            <div class="point panel">
+                <div class="inner">
+                    <h3>点位分布统计</h3>
+                    <!-- 饼图 -->
+                    <div class="chart">
+                        <div class="pie">
+
+                        </div>
+                    </div>
+                    <!-- 数据 -->
+                    <div class="data">
+                        <div class="item">
+                            <h3>320,11</h3>
+                            <span><i class="icon-dot" style="color: #c83836;"> </i> 点位总数</span>
+                        </div>
+                        <div class="item">
+                            <h3>418</h3>
+                            <span><i class="icon-dot" style="color: #eacf19;"> </i> 本月新增</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二列 -->
+        <div class="column">
+            <!-- 1. 地图 -->
+            <div class="chart">
+                <h3><i class="icon-cube" style="color: #68d8fe;"></i> 设备数据统计</h3>
+                <div class="map">
+
+                </div>
+            </div>
+            <!-- 2. 用户统计 -->
+            <div class="users panel">
+                <div class="inner">
+                    <h3>全国用户总量统计</h3>
+                    <!-- 柱形图表 -->
+                    <div class="chart">
+                        <div class="bar"></div>
+                        <div class="data">
+                            <div class="item">
+                                <h3>120,899</h3>
+                                <span><i class="icon-dot" style="color: #ed3f35;"></i> 用户总量</span>
+                            </div>
+                            <div class="item">
+                                <h3>248</h3>
+                                <span><i class="icon-dot" style="color: #eacf19;"></i> 本月新增</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三列 -->
+        <div class="column">
+            <!-- 1. 订单量 -->
+            <div class="order panel">
+                <div class="inner">
+                    <!-- 1. 筛选时间 -->
+                    <div class="filter">
+                        <a href="javascript:;">360天</a>
+                        <a href="javascript:;">90天</a>
+                        <a href="javascript:;" class="active">30天</a>
+                        <a href="javascript:;">24小时</a>
+                    </div>
+                    <!-- 2. 数据展示 -->
+                    <div class="data">
+                        <div class="item">
+                            <h3>1,987</h3>
+                            <span><i class="icon-dot" style="color: #ed3f35;"></i> 订单量</span>
+                        </div>
+                        <div class="item">
+                            <h3>3834</h3>
+                            <span><i class="icon-dot" style="color: #eacf19;"></i> 销售额(万元)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 2. 销售额 -->
+            <div class="sales panel">
+                <div class="inner">
+                    <!-- 1. 头部 -->
+                    <div class="header">
+                        <span>销售额统计</span>
+                        <a href="javascript:;">年</a>
+                        <a href="javascript:;">季</a>
+                        <a href="javascript:;" class="active">月</a>
+                        <a href="javascript:;">日</a>
+                    </div>
+                    <!-- 2. 折线图 -->
+                    <div class="chart">
+                        <div class="line">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3. 渠道与销售进度 -->
+            <div class="wrap">
+                <!-- 3.1 渠道 -->
+                <div class="channel panel">
+                    <div class="inner">
+                        <h3>渠道分布</h3>
+                        <div class="data">
+                            <div class="item">
+                                <h3>39 <small>%</small></h3>
+                                <span><i class="icon-plane"></i> 机场</span>
+                            </div>
+                            <div class="item">
+                                <h3>28 <small>%</small></h3>
+                                <span><i class="icon-bag"></i> 商场</span>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <div class="item">
+                                <h3>20 <small>%</small></h3>
+                                <span><i class="icon-train"></i> 地铁</span>
+                            </div>
+                            <div class="item">
+                                <h3>13 <small>%</small></h3>
+                                <span><i class="icon-bus"></i> 火车站</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3.2 销售进度 -->
+                <div class="quarter panel">
+                    <div class="inner">
+                        <h3>一季度销售进度</h3>
+                        <!-- 环形图 -->
+                        <div class="chart">
+                            <div class="circle">
+
+                            </div>
+                            <h3>75<small>%</small></h3>
+                        </div>
+                        <div class="data">
+                            <div class="item">
+                                <h3>1,321</h3>
+                                <span><i class="icon-dot" style="color: #6acca3;"></i> 销售额(万元)</span>
+                            </div>
+                            <div class="item">
+                                <h3>150%</h3>
+                                <span><i class="icon-dot" style="color: #ed3f35;"></i> 同比增长</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 4. 热销排名 -->
+            <div class="hot panel">
+                <div class="inner">
+                    <div class="state">
+                        <h3>全国热搜</h3>
+                        <ul>
+                            <li>
+                                <span class="icon-cup1" style="color: #d93f36;"></span>
+                                <span>可爱多</span>
+                            </li>
+                            <li>
+                                <span class="icon-cup1" style="color: #68d8fe;"></span>
+                                <span>可爱多</span>
+                            </li>
+                            <li>
+                                <span class="icon-cup1" style="color: #4c9bfd;"></span>
+                                <span>可爱多</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="province">
+                        <h3>各省热销 <span>//近30日//</span></h3>
+                        <ul class="cup">
+                            <li class="active">
+                                <span>北京</span>
+                                <span>25,179 <span class="icon-up" style="color: #dc3c33;"></span></span>
+                            </li>
+                            <li>
+                                <span>河北</span>
+                                <span>22,232 <span class="icon-up" style="color: #36be90;"></span></span>
+                            </li>
+                            <li>
+                                <span>上海</span>
+                                <span>20,232 <span class="icon-up" style="color: #36be90;"></span></span>
+                            </li>
+                            <li>
+                                <span>江苏</span>
+                                <span>19,888 <span class="icon-up" style="color: #dc3c33;"></span></span>
+                            </li>
+                            <li>
+                                <span>山东</span>
+                                <span>18,979 <span class="icon-up" style="color: #dc3c33;"></span></span>
+                            </li>
+                        </ul>
+                        <ul class="cup">
+                            <li>
+                                <span>
+                                </span>可爱多<span> <s class="icon-up" style="color: #DC3C33"></s>9,086
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                </span>娃哈哈<span> <s class="icon-up" style="color: #DC3C33"></s>8,341
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                </span>喜之郎<span> <s class="icon-up" style="color: #DC3C33"></s>7,407
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                </span>八喜<span> <s class="icon-up" style="color: #DC3C33"></s>6,080
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                </span>小洋人<span> <s class="icon-up" style="color: #DC3C33"></s>6,724
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                </span>好多鱼<span> <s class="icon-up" style="color: #DC3C33"></s>2,170
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. 饼图 -->
+    <script>
+        /* 沙箱封装避免全局污染变量 */
+        (function () {
+            //  创建Echarts对象
+            // 基于准备好的DOM,初始化echarts实例
+            let myChart = echarts.init($('.pie')[0]);
+
+            option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b} : {c} ({d}%)'
+                },
+                color: ['#006cff', '#006c00', '#ed8884', '#ff9f7f', '#0096ff', '#9fe6b8', '#ff61ff'],
+                series: [{
+                    name: '分布位置',
+                    type: 'pie',
+                    radius: '50%',
+                    center: ['50%', '50%'],
+                    data: [{
+                            value: 180,
+                            name: '湖北'
+                        },
+                        {
+                            value: 88,
+                            name: '云南'
+                        },
+                        {
+                            value: 120,
+                            name: '北京'
+                        },
+                        {
+                            value: 130,
+                            name: '山东'
+                        },
+                        {
+                            value: 135,
+                            name: '河北'
+                        },
+                        {
+                            value: 66,
+                            name: '江苏'
+                        },
+                        {
+                            value: 130,
+                            name: '浙江'
+                        },
+                        {
+                            value: 150,
+                            name: '四川'
+                        }
+                    ].sort(function (a, b) {
+                        return a.value - b.value;
+                    }),
+                    roseType: 'radius',
+                    animationType: 'scale',
+                    animationEasing: 'elasticOut',
+                    animationDelay: function (idx) {
+                        return Math.random() * 200;
+                    }
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图标
+            myChart.setOption(option);
+        })()
+    </script>
+
+    <!-- 2. 柱形图 -->
+    <script>
+        /* 沙箱封装避免全局污染变量 */
+        (function () {
+            let myChart = echarts.init($('.bar')[0]);
+
+            let item = {
+                value: 1000,
+                itemStyle: {
+                    color: 'rgba(0,0,0,.5)'
+                },
+            }
+            option = {
+                // color: ['#3398DB'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: ['上海', '广州', '北京', '深圳', '合肥', '', '......', '', '杭州', '厦门', '济南', '成都',
+                        '重庆'
+                    ],
+                    axisTick: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    axisLabel: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    splitLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    }
+                }],
+                yAxis: [{
+                    type: 'value',
+                    axisTick: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    axisLabel: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    }
+                }],
+                series: [{
+                    name: '直接访问',
+                    type: 'bar',
+                    barWidth: '60%',
+                    data: [2100, 1900, 1700, 1560, 1400, item, item, item, 900, 750, 600, 480, 240],
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [{
+                                    offset: 0,
+                                    color: '#00fffb'
+                                },
+                                {
+                                    offset: 1,
+                                    color: '#0061ce'
+                                }
+                            ]
+                        )
+                    },
+
+                }]
+            };
+
+            myChart.setOption(option);
+        })()
+    </script>
+    <!-- 3. 折线图 -->
+    <script>
+        /* 沙箱封装避免全局变量污染 */
+        (function () {
+            let myChart = echarts.init($('.line')[0]);
+
+            let option = {
+                title: {
+                    text: '万元',
+                    left: 30,
+                    textStyle: {
+                        color: '#4996f5',
+                    }
+                },
+
+                legend: {
+                    data: ['预期销售额', '实际销售额'],
+                    textStyle: {
+                        color: '#0292ea'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '1%',
+                    top: '20%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    axisTick: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    axisLabel: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                },
+                yAxis: {
+                    type: 'value',
+                    axisTick: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                    axisLabel: {
+                        lineStyle: {
+                            color: '#0075d1'
+                        }
+                    },
+                },
+                series: [{
+                        name: '预期销售额',
+                        type: 'line',
+                        data: [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+                        symbolSize: 8,
+                        itemStyle: {
+                            color: '#f62233'
+                        },
+                        smooth: true
+                    },
+                    {
+                        name: '实际销售额',
+                        type: 'line',
+                        data: [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
+                        symbolSize: 8,
+                        itemStyle: {
+                            color: '#0075d1'
+                        },
+                        smooth: true
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+
+            /*****  点击tab栏刷新新图表数据
+             *       核心原理: 替换option.series[0].data 里面的数据
+             */
+            let data = [
+                [
+                    [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+                    [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79]
+                ],
+                [
+                    [23, 75, 12, 97, 21, 67, 98, 21, 43, 64, 76, 38],
+                    [43, 31, 65, 23, 78, 21, 82, 64, 43, 60, 19, 34]
+                ],
+                [
+                    [34, 87, 32, 76, 98, 12, 32, 87, 39, 36, 29, 36],
+                    [56, 43, 98, 21, 56, 87, 43, 12, 43, 54, 12, 98]
+                ],
+                [
+                    [43, 73, 62, 54, 91, 54, 84, 43, 86, 43, 54, 53],
+                    [32, 54, 34, 87, 32, 45, 62, 68, 93, 54, 54, 24]
+                ]
+            ];
+
+            $('.sales .header a')
+                .click(function () {
+                    let index = $(this).index() - 1;
+                    // 自动轮播联动
+                    currentIndex = index;
+                    // 第一根线
+                    option.series[0].data = data[index][0];
+                    // 第二根线
+                    option.series[1].data = data[index][1];
+
+                    // 注意点: 切换数据之后一定要重新调用setOption() 方法重新渲染
+                    myChart.setOption(option);
+                });
+            // 自动无线轮播折线图数据
+            let currentIndex = 0;
+            setInterval(function () {
+                currentIndex == 3 ? currentIndex = 0 : currentIndex++;
+                $('.sales .header a').eq(currentIndex).click();
+            }, 2000)
+        })()
+    </script>
+    <!-- 4. 环形图(半圆) -->
+    <script>
+        /* 沙箱封装避免全局变量污染 */
+        (function () {
+            let myChart = echarts.init($('.circle')[0]);
+
+            option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                },
+                series: [{
+                    startAngle: 180,
+                    type: 'pie',
+                    radius: ['100%', '90%'],
+                    center: ['50%', '60%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [{
+                            value: 100,
+                            name: ' ',
+                            itemStyle: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [{
+                                            offset: 0,
+                                            color: '#00f8fc'
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: '#0069cf'
+                                        }
+                                    ]
+                                )
+                            },
+                        },
+                        {
+                            value: 100,
+                            name: ' ',
+                            itemStyle: {
+                                color: '#04284d'
+                            }
+                        },
+                        {
+                            value: 200,
+                            name: ' ',
+                            itemStyle: {
+                                color: 'transparent'
+                            }
+                        },
+                    ]
+                }]
+            };
+
+            myChart.setOption(option);
+        })()
+    </script>
+    <!-- 5. 地图 -->
+    <script>
+        /* 沙箱封装避免全局变量污染 */
+        (function () {
+            let myChart = echarts.init($('.map')[0]);
+
+            var chinaGeoCoordMap = {
+                '黑龙江': [127.9688, 45.368],
+                '内蒙古': [110.3467, 41.4899],
+                "吉林": [125.8154, 44.2584],
+                '北京市': [116.4551, 40.2539],
+                "辽宁": [123.1238, 42.1216],
+                "河北": [114.4995, 38.1006],
+                "天津": [117.4219, 39.4189],
+                "山西": [112.3352, 37.9413],
+                "陕西": [109.1162, 34.2004],
+                "甘肃": [103.5901, 36.3043],
+                "宁夏": [106.3586, 38.1775],
+                "青海": [101.4038, 36.8207],
+                "新疆": [87.9236, 43.5883],
+                "西藏": [91.11, 29.97],
+                "四川": [103.9526, 30.7617],
+                "重庆": [108.384366, 30.439702],
+                "山东": [117.1582, 36.8701],
+                "河南": [113.4668, 34.6234],
+                "江苏": [118.8062, 31.9208],
+                "安徽": [117.29, 32.0581],
+                "湖北": [114.3896, 30.6628],
+                "浙江": [119.5313, 29.8773],
+                "福建": [119.4543, 25.9222],
+                "江西": [116.0046, 28.6633],
+                "湖南": [113.0823, 28.2568],
+                "贵州": [106.6992, 26.7682],
+                "云南": [102.9199, 25.4663],
+                "广东": [113.12244, 23.009505],
+                "广西": [108.479, 23.1152],
+                "海南": [110.3893, 19.8516],
+                '上海': [121.4648, 31.2891],
+                '深圳': [114.0310, 22.3243],
+                '台湾': [120.8803, 23.6625],
+            };
+            var chinaDatas = [
+                [{
+                    name: '黑龙江',
+                    value: 0
+                }],
+                [{
+                    name: '内蒙古',
+                    value: 0
+                }],
+                [{
+                    name: '吉林',
+                    value: 0
+                }],
+                [{
+                    name: '辽宁',
+                    value: 0
+                }],
+                [{
+                    name: '河北',
+                    value: 0
+                }],
+                [{
+                    name: '天津',
+                    value: 0
+                }],
+                [{
+                    name: '山西',
+                    value: 0
+                }],
+                [{
+                    name: '陕西',
+                    value: 0
+                }],
+                [{
+                    name: '甘肃',
+                    value: 0
+                }],
+                [{
+                    name: '宁夏',
+                    value: 0
+                }],
+                [{
+                    name: '青海',
+                    value: 0
+                }],
+                [{
+                    name: '新疆',
+                    value: 0
+                }],
+                [{
+                    name: '西藏',
+                    value: 0
+                }],
+                [{
+                    name: '四川',
+                    value: 0
+                }],
+                [{
+                    name: '重庆',
+                    value: 0
+                }],
+                [{
+                    name: '山东',
+                    value: 0
+                }],
+                [{
+                    name: '河南',
+                    value: 0
+                }],
+                [{
+                    name: '江苏',
+                    value: 0
+                }],
+                [{
+                    name: '安徽',
+                    value: 0
+                }],
+                [{
+                    name: '湖北',
+                    value: 0
+                }],
+                [{
+                    name: '浙江',
+                    value: 0
+                }],
+                [{
+                    name: '福建',
+                    value: 0
+                }],
+                [{
+                    name: '江西',
+                    value: 0
+                }],
+                [{
+                    name: '湖南',
+                    value: 0
+                }],
+                [{
+                    name: '贵州',
+                    value: 0
+                }],
+                [{
+                    name: '广西',
+                    value: 0
+                }],
+                [{
+                    name: '海南',
+                    value: 0
+                }],
+                [{
+                    name: '上海',
+                    value: 1
+                }],
+                [{
+                    name: '深圳',
+                    value: 1
+                }],
+                [{
+                    name: '台湾',
+                    value: 1
+                }]
+            ];
+
+            var convertData = function (data) {
+                var res = [];
+                for (var i = 0; i < data.length; i++) {
+                    var dataItem = data[i];
+                    var fromCoord = chinaGeoCoordMap[dataItem[0].name];
+                    var toCoord = [116.4551, 40.2539];
+                    if (fromCoord && toCoord) {
+                        res.push([{
+                            coord: fromCoord,
+                            value: dataItem[0].value
+                        }, {
+                            coord: toCoord,
+                        }]);
+                    }
+                }
+                return res;
+            };
+            var series = [];
+            [
+                ['北京市', chinaDatas]
+            ].forEach(function (item, i) {
+                console.log(item)
+                series.push({
+                        type: 'lines',
+                        zlevel: 2,
+                        effect: {
+                            show: true,
+                            period: 4, //箭头指向速度，值越小速度越快
+                            trailLength: 0.02, //特效尾迹长度[0,1]值越大，尾迹越长重
+                            symbol: 'arrow', //箭头图标
+                            symbolSize: 5, //图标大小
+                        },
+                        lineStyle: {
+                            normal: {
+                                width: 1, //尾迹线条宽度
+                                opacity: 1, //尾迹线条透明度
+                                curveness: .3 //尾迹线条曲直度
+                            }
+                        },
+                        data: convertData(item[1])
+                    }, {
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        zlevel: 2,
+                        rippleEffect: { //涟漪特效
+                            period: 4, //动画时间，值越小速度越快
+                            brushType: 'stroke', //波纹绘制方式 stroke, fill
+                            scale: 4 //波纹圆环最大限制，值越大波纹越大
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'right', //显示位置
+                                offset: [5, 0], //偏移设置
+                                formatter: function (params) { //圆环显示文字
+                                    return params.data.name;
+                                },
+                                fontSize: 13
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        symbol: 'circle',
+                        symbolSize: function (val) {
+                            return 5 + val[2] * 5; //圆环大小
+                        },
+                        itemStyle: {
+                            normal: {
+                                show: false,
+                                color: '#f00'
+                            }
+                        },
+                        data: item[1].map(function (dataItem) {
+                            return {
+                                name: dataItem[0].name,
+                                value: chinaGeoCoordMap[dataItem[0].name].concat([dataItem[0]
+                                    .value
+                                ])
+                            };
+                        }),
+                    },
+                    //被攻击点
+                    {
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        zlevel: 2,
+                        rippleEffect: {
+                            period: 4,
+                            brushType: 'stroke',
+                            scale: 4
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                //offset:[5, 0],
+                                color: '#0f0',
+                                formatter: '{b}',
+                                textStyle: {
+                                    color: "#0f0"
+                                }
+                            },
+                            emphasis: {
+                                show: true,
+                                color: "#f60"
+                            }
+                        },
+                        symbol: 'pin',
+                        symbolSize: 50,
+                        data: [{
+                            name: item[0],
+                            value: chinaGeoCoordMap[item[0]].concat([10]),
+                        }],
+                    }
+                );
+            });
+
+            option = {
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: 'rgba(166, 200, 76, 0.82)',
+                    borderColor: '#FFFFCC',
+                    showDelay: 0,
+                    hideDelay: 0,
+                    enterable: true,
+                    transitionDuration: 0,
+                    extraCssText: 'z-index:100',
+                    formatter: function (params, ticket, callback) {
+                        //根据业务自己拓展要显示的内容
+                        var res = "";
+                        var name = params.name;
+                        var value = params.value[params.seriesIndex + 1];
+                        res = "<span style='color:#fff;'>" + name + "</span><br/>数据：" + value;
+                        return res;
+                    }
+                },
+                // backgroundColor: "#013954",
+                visualMap: { //图例值控制
+                    min: 0,
+                    max: 1,
+                    calculable: true,
+                    show: false,
+                    color: ['#f44336', '#fc9700', '#ffde00', '#ffde00', '#00eaff'],
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                geo: {
+                    map: 'china',
+                    zoom: 1.2,
+                    label: {
+                        emphasis: {
+                            show: false
+                        }
+                    },
+                    roam: true, //是否允许缩放
+                    itemStyle: {
+                        normal: {
+                            color: 'rgba(51, 69, 89, .5)', //地图背景色
+                            borderColor: '#516a89', //省市边界线00fcff 516a89
+                            borderWidth: 1
+                        },
+                        emphasis: {
+                            color: 'rgba(37, 43, 61, .5)' //悬浮背景
+                        }
+                    }
+                },
+                series: series
+            };
+
+            myChart.setOption(option);
+        })()
+    </script>   
+</body>
+
+</html>

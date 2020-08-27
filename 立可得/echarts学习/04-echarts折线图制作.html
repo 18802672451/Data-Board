@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1.导包 -->
+    <script src="./echarts.js"></script>
+</head>
+<!--echarts使用流程 
+        1.导包
+        2.写html结构
+        3.js初始化
+            3.1 创建echarts对象
+            3.2 设置配置项和数据
+            3.3 开始渲染图表
+     -->
+
+<body>
+    <!-- 2.写HTML结构 -->
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 800px;height:400px;"></div>
+
+    <script>
+        /* 3.JS初始化 */
+
+        //3.1 创建echarts对象
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 3.2 指定图表的配置项和数据
+        var option = {
+
+            title: {
+                text: '单位：万',
+                subtext: '59期',
+                textStyle: {
+                    color: '#0292ea'
+                },
+                left: 30
+            },
+
+            tooltip: {
+                trigger: 'axis'
+            },
+
+            //顶部小图标提示 ： 注意数组内容必须要和seriesl里面的name一致
+            legend: {
+                data: ['预期销售额', '实际销售额'],
+                textStyle: {
+                    color: '#0292ea'
+                }
+            },
+
+            //右上角工具箱
+            toolbox: {
+                show: false,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: { readOnly: false },
+                    magicType: { type: ['line', 'bar'] },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                //刻度文本
+                axisLabel: {
+                    color: '#0075d1'
+                },
+                //刻度线颜色
+                axisTick: {
+                    lineStyle: {
+                        color: '#0075d1'
+                    }
+                },
+                //坐标轴线
+                axisLine: {
+                    lineStyle: {
+                        color: '#0075d1'
+                    }
+                },
+
+            },
+
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    color: '#0075d1'
+                },
+                //刻度线颜色
+                axisTick: {
+                    lineStyle: {
+                        color: '#0075d1'
+                    }
+                },
+                //坐标轴线
+                axisLine: {
+                    lineStyle: {
+                        color: '#0075d1'
+                    }
+                },
+            },
+            series: [
+                {
+                    name: '预期销售额',
+                    type: 'line',
+                    //曲线
+                    smooth: true,
+                    //圈圈大小
+                    symbolSize: 8,
+                    data: [24, 40, 101, 134, 90, 230, 210, 230, 120, 230, 210, 120],
+                },
+                {
+                    name: '实际销售额',
+                    type: 'line',
+                    smooth: true,
+                    //圈圈大小
+                    symbolSize: 8,
+                    data: [40, 64, 191, 324, 290, 330, 310, 213, 180, 200, 180, 79],
+
+                },
+
+            ]
+        };
+
+        // 3.3 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>

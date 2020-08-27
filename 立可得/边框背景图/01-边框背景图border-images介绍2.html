@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 150px;
+            background-color: pink;
+            float: left;
+            margin-left: 50px;
+            margin-top: 40px;
+            border: 30px solid skyblue;
+        }
+        #box1{
+            border-image-source: url('./border.jpg');
+            /* border-image-source : 边框背景图  资源 路径 */
+
+            border-image-slice:  167 167 167 167;
+            /* border-image-slice  :  上 右 下 左    数字后面不加单位*/
+
+            border-image-width: 30px;
+            /* border-image-width  :  边框背景图宽度  (默认就是border的宽度,一般不设置) */
+
+            border-image-repeat: stretch;
+            /* border-image-repeat  :  平铺方式  */
+            /*  stretch  : 拉伸(默认值) */
+        }
+
+        #box2{
+            border-image: url('./border.jpg') 167/30px  repeat ;
+            /* 边框背景图  
+                repeat : 平铺 让图形从中心位置开始平铺整个边框,导致部分图形显示不全(体验不佳)
+             */
+        }
+
+        #box3{
+            border-image: url('./border.jpg') 167/30px round;
+            /* 边框背景图
+                round  :  环绕  图形一定会完整的铺满整个边框,但是会有轻微的变形(比较常用)
+             */
+        }
+
+        #box4{
+            border-image: url('./border.jpg') 167/30px space;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+</body>
+</html>

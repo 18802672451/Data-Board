@@ -1,0 +1,556 @@
+/* 项目整体布局 */
+
+/* 1.body背景图 */
+body{
+    background: url(../images/bg.jpg) no-repeat;
+    /* corver : 自动等比缩放，铺满整个盒子（图片显示不全） */
+    background-size: cover;
+}
+
+/* 2.版心样式 */
+.container{
+    /* 高度 >= 780px */
+    min-height: 780px;
+    background: url(../images/logo.png) no-repeat;
+    /* contain: 自动等比缩放，显示整张图片(盒子有留白) */
+    background-size: contain;
+    /* 设置父元素为伸缩盒子 */
+    display: flex;
+    padding: 80px 20px 0px;
+}
+
+/* 3.三列布局 */
+.cloumn{
+    flex: 3;
+}
+
+.cloumn:nth-child(2){
+    flex: 4;
+}
+
+/* 4.通用面板样式 */
+ /* 面板：边框背景图 */
+ .panel {
+    /* 注意点1：一定要先设置border。如果是不规则图形需要单独设置border宽度 */
+    border: 20px solid red;
+    border-width: 52px 40px 22px 125px;
+
+    border-image: url(../images/border.png) 52 40 22 125 stretch;
+
+    /* 注意点2： 设置border之后，默认会将盒子撑开. 
+    原因： 默认盒子是外扩盒子 = content + padding + border （border增加，盒子增加）
+    解决方案： 设置为内减盒子  = width   (border增加，内容自减)
+    */
+    box-sizing: border-box;
+
+    /* 注意点3：内减盒子 boder增大后会影响内容的布局
+    解决方案： 嵌套一个子盒子，使用子绝父相定位来解决
+    */
+    position: relative;
+}
+
+.inner {
+    position: absolute;
+    top: -52px;
+    right: -40px;
+    bottom: -22px;
+    left: -125px;
+    padding: 20px 30px;
+}
+
+
+/*             第一列             */
+
+/* 1.数据概览 */
+.overview{
+    height: 110px;
+}
+
+.overview .item{
+    float: left;
+    width: 25%;
+    color: #fff;
+    text-align: center;
+}
+
+.overview .item h3{
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
+.overview .item span{
+    color: #2C9BFD;
+}
+
+
+/* 2.故障监控 */
+.monitor{
+    height: 475px;
+    margin-top: 20px;
+}
+
+/* 2.1 头部tab栏 */
+.monitor .tab span{
+    font-size: 18px;
+    color: #1850C3;
+    padding: 0px 18px;
+    cursor: pointer;
+}
+
+.monitor .tab span:nth-child(2){
+    border-left: 2px solid #00F1F1;
+}
+
+/* 选中状态样式 */
+.monitor .tab span.active{
+    color: #fff;
+}
+
+/* 2.2 轮播图视图 ：子绝父相 */
+
+
+
+/* 头部固定区域 */
+.carousel-view .header{
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 15px -30px;
+    padding-left: 45px;
+}
+
+.carousel-view .header span{
+    /* 浮动会默认盒子变成行内块 */
+    float: left;
+    width: 25%;
+    color: #68D5F1;
+    line-height: 35px;
+    font-size: 15px;
+}
+
+.carousel-view .header span:nth-child(2){
+    width: 50%;
+}
+
+/* 底部轮播滚动区域 */
+
+.lunbo{
+    position: relative;
+    /* 超出部分不可见 */
+    overflow: hidden;
+    height: 350px;
+}
+
+.carousel{
+    position: absolute;
+    top:0;
+}
+
+.carousel .row{
+    height: 35px;
+    color: #1850C3;
+    line-height: 35px;
+    margin: 0px -30px;
+    padding-left: 45px;
+    /* 子绝父相设置小点点位置 */
+    position: relative; 
+}
+
+/* 小点点位置 */
+.carousel .row i{
+    position: absolute;
+    left: 28px;
+    top: 10px;
+    font-size: 15px;
+    /* 默认隐藏 */
+    display: none;
+}
+
+.carousel .row span{
+    float: left;
+    width: 25%;
+    line-height: 35px;
+    font-size: 15px;
+}
+
+.carousel .row span:nth-child(2){
+    width: 50%;
+    /* 不允许换行 */
+    white-space: nowrap;
+    /* 超出部分隐藏 */
+    overflow: hidden;
+    /* 超出部分省略号 */
+    text-overflow: ellipsis;
+}
+
+/* 选中状态row */
+.carousel .row.active{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.carousel .row.active span{
+    color: #00F1F1;
+}
+
+.carousel .row.active i{
+    display: block;
+}
+
+
+/* 3.点位分布 */
+.point{
+    height: 335px;
+    margin-top: 20px;
+}
+
+.point h3{
+    font-size: 20px;
+    color: #fff;
+}
+
+.point .chart{
+    height: 236px;
+    margin-top: 20px;
+}
+
+.point .chart .pie{
+    float: left;
+    width: 60%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.point .chart .data{
+    float: left;
+    width: 40%;
+    height: 100%;
+    background: url(../images/rect.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.point .chart .data .item{
+    width: 100%;
+    height: 50%;
+    color: #fff;
+    text-align: center;
+    /* 
+    1.发现问题：给子元素h3设置margin-top之后，margin会对父元素item生效。产生margin塌陷现象
+    2.解决方案 ： 解决margin塌陷有三种方式
+        a. 设置父元素的overflow为hidden
+        b. 给父元素添加一个border
+        c. 使用padding-top代替margin
+    */
+    overflow: hidden;
+}
+
+.point .chart .data .item h3{
+    font-size: 18px;
+    margin: 35px 0 10px;
+}
+
+.point .chart .data .item span{
+    color: #2C9BFD;
+}
+
+
+
+
+/*             第二列             */
+
+/* 1.地图 */
+.map h3{
+    color: #fff;
+    font-size: 18px;
+    padding: 35px 20px 15px;
+}
+
+.map .chart{
+    height: 532px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-left: 20px;
+}
+
+/*地图图表高度  */
+.map .chart .geo{
+    height: 100%;
+}
+
+
+/* 2.全国用户总量统计 */
+
+.users{
+    height: 335px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.users h3{
+    font-size: 18px;
+    color: #fff;
+}
+
+.users .chart{
+    height: 235px;
+    margin-top: 20px;
+}
+
+.users .chart .bar{
+    float: left;
+    width: 70%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.users .chart .data{
+    float: left;
+    width: 30%;
+    height: 100%;
+    background: url(../images/rect.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.users .chart .data .item{
+    height: 50%;
+    color: #2C9BFD;
+    text-align: center;
+    /* 解决h3的margin-top塌陷 */
+    overflow: hidden;
+}
+
+.users .chart .data .item h3{
+    font-size: 18px;
+    color: #fff;
+    margin: 35px 0 10px;
+}
+
+
+/*             第三列             */
+
+/* 1.订单统计 */
+.order{
+    height: 145px;
+    margin-left: 20px;
+}
+
+.order .filter{
+    height: 20px;
+}
+
+.order .filter a{
+    display: inline-block;
+    width: 75px;
+    color: #1850C3;
+    text-align: center;
+}
+
+.order .filter a:nth-child(n+2){
+    border-left: 2px solid #00F1F1;
+}
+
+/* 选中状态样式 */
+.order .filter a.active{
+    color: #fff;
+}
+
+.order .item{
+    float: left;
+    width: 50%;
+    color: #2C9BFD;
+    padding-left: 20px;
+}
+
+.order .item h3{
+    font-size: 18px;
+    color: #fff;
+    margin: 20px 0 10px;
+}
+
+
+
+/* 2.销售额统计 */
+.sales{
+    height: 245px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.sales .header span{
+    font-size: 18px;
+    color: #fff;
+    border-right: 2px solid #00F1F1;
+    padding-right: 10px;
+}
+
+.sales .header a{
+    color: #1850C3;
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* a标签选中状态样式 */
+.sales .header a.active{
+    background-color: #4c9bfd;
+    color: #fff;
+}
+
+
+.sales .chart{
+    margin-top: 20px;
+    height: 155px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sales .chart .line{
+    height: 100%;
+}
+
+/* 3.渠道分布与一季度销售进 */
+.wrap{
+    height: 230px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.wrap .channel,.wrap .quarter{
+    float: left;
+    height: 100%;
+    width: 48%;
+}
+
+.wrap .quarter{
+    margin-left: 4%;
+}
+
+/* 3.1 渠道分布 */
+.channel h3{
+    font-size: 18px;
+    color: #fff;
+}
+
+.channel .data .item{
+    float: left;
+    width: 50%;
+    color: #1850C3;
+    text-align: center;
+}
+
+.channel .data .item h3{
+    color: #fff;
+    margin: 20px 0 10px;
+}
+
+/* 3.2 一季度销售 */
+.quarter h3{
+    font-size: 18px;
+    color: #fff;
+}
+
+.quarter .chart{
+    height: 80px;
+    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* 子绝父相实现75%文本水平+垂直居中 */
+    position: relative;
+}
+
+.quarter .chart h3{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* 自身继续左上角偏移宽高一半 */
+    transform: translate(-50%,-30%);
+}
+
+.quarter .chart .circle{
+    height: 100%;
+}
+
+.quarter .data .item{
+    float: left;
+    width: 50%;
+    color: #1850C3;
+    transform: scale(0.8);
+    white-space: nowrap;
+}
+
+.quarter .data .item h3{
+    font-size: 18px;
+    color: #fff;
+    margin: 10px 0;
+}
+
+
+
+
+
+/* 4.全国热榜 */
+.hot{
+    height: 280px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.hot .guo,.hot .sheng{
+    float: left;
+    width: 30%;
+    color: #1850C3;
+}
+
+.hot .sheng{
+    width: 70%;
+}
+
+/* 4.1 全国热榜 */
+.hot h3{
+    font-size: 18px;
+    color: #fff;
+}
+
+.hot .guo ul>li{
+    margin-top: 25px;
+}
+
+.hot .guo ul>li span:nth-child(1){
+    font-size: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.hot .sheng h3 span{
+    float: right;
+    font-size: 12px;
+    color: #1850C3;
+}
+
+/* ul样式 */
+.hot .cup{
+    float: left;
+    width: 50%;
+    margin-top: 15px;
+}
+
+.hot .cup li{
+    font-size: 12px;
+    color: #2C9BFD;
+    height: 30px;
+    line-height: 30px;
+}
+
+.hot .cup li span:nth-child(2){
+    float: right;
+}
+
+/* 第一个ul鼠标移入状态 */
+.hot .sheng .cup:nth-child(2) li.active{
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #00F1F1;
+}
+
+
+/* 第二个ul里面不同的样式： 背景颜色和文字颜色 */
+.hot .sheng .cup:nth-child(3) li{
+    color: #00F1F1;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+

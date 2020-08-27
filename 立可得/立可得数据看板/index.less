@@ -1,0 +1,486 @@
+/* 背景 盒子 代码 */
+body {
+    background: url(../images/bg.jpg);
+    background-size: cover;
+
+    /* 面板 : 边框背景图 */
+    .panel {
+        border: 30px solid skyblue;
+        border-width: 52px 40px 22px 125px;
+        border-image: url(../images/border.png) 50 40 22 125 stretch;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .inner {
+        position: absolute;
+        top: -52px;
+        right: -40px;
+        bottom: -22px;
+        left: -125px;
+        padding: 20px 30px;
+    }
+
+    // 版心
+    .container {
+        background: url(../images/logo.png) no-repeat;
+        background-size: contain;
+        min-height: 100vh;
+        padding: 88px 20px 0;
+        display: flex;
+
+        .column {
+            flex: 3;
+
+            &:nth-child(2) {
+                flex: 4;
+                padding: 0 20px;
+            }
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #fff;
+        }
+    }
+}
+
+/*                      第一列                   */
+// 1. 设备
+.facility {
+    height: 108px;
+
+    .item {
+        float: left;
+        width: 25%;
+        text-align: center;
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        span {
+            color: #0952d8;
+            // font-size: 16px;
+        }
+    }
+}
+
+// 2. 故障 
+.fault {
+    height: 475px;
+    margin-top: 20px;
+
+    // 2.1 设备切换tab栏
+    .tab {
+        span {
+            color: #0952d8;
+            margin-right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+
+            &:nth-child(2) {
+                padding-left: 20px;
+                border-left: 2px solid #00f2f1;
+            }
+        }
+
+        .active {
+            color: #fff;
+        }
+    }
+
+    // 2.2 设备信息
+    .carousel-view {
+        margin-top: 15px;
+
+        // 2.2.1 故障信息头部
+        .header {
+            height: 35px;
+            display: flex;
+            font-size: 14px;
+            margin: 15px -30px 10px;
+            padding-left: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+
+            span {
+                flex: 25%;
+                color: #60c5e8;
+                line-height: 35px;
+
+                &:nth-child(2) {
+                    flex: 50%;
+                }
+            }
+        }
+
+        // 2.2.2 轮播滚动区域
+        /* 底部轮播滚动区域 */
+        .lunbo {
+            height: 350px;
+            position: relative;
+            /* 超出部分不可见 */
+            overflow: hidden;
+        }
+        .carousel {
+            height: 350px;
+            position: absolute;
+            margin-left: -20px;
+            margin-right: -20px;
+
+            .row {
+                height: 35px;
+                padding-left: 20px;
+                position: relative;
+                cursor: pointer;
+                color: #0952d8;
+
+                span {
+                    float: left;
+                    width: 25%;
+                    line-height: 35px;
+                    font-size: 14px;
+
+                    &:nth-child(2) {
+                        float: left;
+                        width: 50%;
+                        // 1. 不允许换行: 强制一行显示
+                        white-space: nowrap;
+                        // 2. 超出部分隐藏
+                        overflow: hidden;
+                        // 3. 超出部分显示省略号
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                i {
+                    display: none;
+                    position: absolute;
+                    top: 10px;
+                    left: 5px;
+                }
+            }
+
+            .active {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: #00f2f1;
+
+                i {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+// 3. 点位分布
+.point {
+    height: 335px;
+    margin-top: 20px;
+
+    .chart .pie {
+        float: left;
+        width: 60%;
+        margin-top: 20px;
+        height: 238px;
+    }
+
+    .data {
+        float: left;
+        width: 40%;
+        height: 238px;
+        margin-top: 20px;
+        background: url(../images/rect.png) no-repeat;
+        background-size: 100% 100%;
+
+        .item {
+            height: 50%;
+            text-align: center;
+
+            h3 {
+                padding: 35px 0 10px;
+            }
+
+            span {
+                color: #0952d8;
+            }
+        }
+    }
+}
+
+/*                      第二列                   */
+// 1. 地图
+.chart {
+    h3 {
+        padding-top: 35px;
+    }
+
+    .map {
+        margin-top: 20px;
+        height: 525px;
+    }
+}
+
+// 2. 用户统计
+.users {
+    height: 335px;
+    margin-top: 20px;
+
+    // 柱形图表
+    .chart {
+        margin-top: 20px;
+
+        .bar {
+            height: 238px;
+            float: left;
+            width: 70%;
+        }
+
+        .data {
+            height: 238px;
+            float: left;
+            width: 30%;
+            background: url(../images/rect.png) no-repeat;
+            background-size: 100% 100%;
+            overflow: hidden;
+
+            .item {
+                height: 50%;
+                text-align: center;
+
+                h3 {
+                    padding: 35px 0 10px;
+                }
+
+                span {
+                    color: #0952d8;
+                }
+            }
+        }
+    }
+}
+
+/*                      第三列                   */
+// 1. 订单量
+.order {
+    height: 145px;
+
+    // 1. 筛选时间
+    .filter {
+        a {
+            margin-right: 18px;
+            color: #0952d8;
+            font-size: 14px;
+
+            &:nth-child(n+2) {
+                padding-left: 18px;
+                border-left: 2px solid #00f2f1;
+            }
+        }
+
+        .active {
+            color: #fff;
+        }
+    }
+
+    // 2. 数据展示
+    .data {
+        display: flex;
+
+        .item {
+            flex: 1;
+
+            h3 {
+                padding: 15px 0 10px;
+            }
+
+            span {
+                color: #0952d8;
+            }
+        }
+    }
+}
+
+// 2. 销售额
+.sales {
+    height: 245px;
+    margin-top: 20px;
+
+    .header {
+        color: #fff;
+
+        span {
+            font-size: 18px;
+            padding-right: 18px;
+            border-right: 2px solid #00f2f1;
+        }
+
+        a {
+            color: #0bace6;
+            font-size: 16px;
+            margin: 0 15px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .active {
+            color: #fff;
+            background-color: #4c9bfd;
+        }
+
+
+    }
+
+    // 折线图
+    .chart {
+        margin-top: 20px;
+        .line{
+            height: 155px;
+        }
+    }
+}
+
+// 3. 渠道与销售进度
+.wrap {
+    margin-top: 20px;
+    height: 230px;
+    display: flex;
+
+    /* 3.1 渠道分布 */
+    .channel {
+        flex: 48%;
+
+        .data {
+            float: left;
+            width: 50%;
+            height: 100%;
+
+            .item {
+                margin-top: 20px;
+                color: #4b82c8;
+
+                h3 {
+                    font-size: 25px;
+                }
+
+                span {
+                    font-size: 14px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    /* 3.2 销售进度 */
+    .quarter {
+        flex: 48%;
+        margin-left: 4%;
+
+        .chart {
+            position: relative;
+
+            .circle {
+                height: 80px;
+                // background-color: rgba(255, 255, 255, .1);
+                margin: 10px 0;
+            }
+
+            h3 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -80%);
+            }
+        }
+
+        .data {
+            .item {
+                float: left;
+                width: 50%;
+
+                h3 {
+                    margin-top: 10px;
+                }
+
+                span {
+                    margin-top: 10px;
+                    color: #4b82c8;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+// 4. 热销排名
+.hot {
+    height: 280px;
+    margin-top: 20px;
+
+
+    .state {
+        float: left;
+        width: 30%;
+
+        ul {
+            margin-top: 20px;
+            color: #4b82c8;
+            font-size: 14px;
+
+            li {
+                height: 65px;
+
+                span {
+                    margin-left: 10px;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    .province {
+        float: left;
+        width: 70%;
+
+        h3 {
+            span {
+                color: #4b82c8;
+                float: right;
+                font-size: 14px;
+                vertical-align: text-bottom;
+            }
+        }
+
+        .cup {
+            float: left;
+            margin-top: 20px;
+            width: 50%;
+
+            li {
+                height: 32px;
+                line-height: 32px;
+                font-size: 12px;
+                color: #295693;
+                cursor: pointer;
+
+                span {
+                    padding-left: 12px;
+
+                    &:nth-child(2) {
+                        float: right;
+                    }
+                }
+            }
+
+            .active {
+                background-color: rgba(255, 255, 255, .1);
+                color: #52ffff;
+            }
+
+            &:nth-child(3) li {
+                background-color: rgba(255, 255, 255, .1);
+                color: #52ffff;
+            }
+        }
+    }
+}

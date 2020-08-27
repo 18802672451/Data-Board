@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            float: left;
+            width: 300px;
+            height: 150px;
+            margin-top: 30px;
+            background-color: pink;
+            margin-left: 30px;
+            /* *****一定一定要记住：使用边框背景图的前提条件是，一定要有border */
+            border: 20px solid red;
+        }
+
+
+        #box1{
+            /* 1. border-images 是一个复合属性 （复合写法） */
+            border-image: url(./border.jpg) 167/20px stretch;
+
+            /* 2. border-images复合属性右以下几个属性组成 */
+
+            /* 2.1 border-image-source : 边框背景图 资源 */
+            /* border-image-source: url("./border.jpg"); */
+            /* 2.2 border-image-slice : 上 右 下 左
+            注意： 数字后面不能加px, 因为裁剪尺寸默认单位就是px
+            */
+            /* border-image-slice: 167 167 167 167; */
+            /* 2.3 border-image-width : 边框背景图宽度 (默认就是border的宽度,一般可以不设置)*/
+            /* border-image-width: 20px; */
+            /* 2.4 border-image-repeat : 平铺方式*/
+            /* stretch ： 拉伸（默认值） */
+            /* border-image-repeat: stretch; */
+        }
+
+        #box2{
+            /* 边框背景图
+            repeat : 平铺  让图形从中心位置开始平铺整个边框，导致部分图形显示不全（体验不好）
+            */
+            border-image: url(./border.jpg) 167/20px repeat;
+        }
+
+        #box3{
+            /* 边框背景图
+            round : 环绕。 图形一定会完整的铺满整个边框，但是可能会有轻微的变形
+            */
+            border-image: url(./border.jpg) 167/20px round;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+</body>
+</html>

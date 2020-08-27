@@ -1,0 +1,555 @@
+/* 项目整体布局 */
+
+/* 1. body背景图 */
+body {
+    background: url('../images/bg.jpg') no-repeat;
+    /* cover: 自动等比缩放,图片铺满整个盒子(图片显示不全) */
+    background-size: cover;
+}
+
+/* 2. 版心样式 */
+.container {
+    min-height: 100vh;
+    background: url(../images/logo.png) no-repeat;
+    /* contaion : 自动等比缩放, 显示整张图片(盒子留有空白) */
+    background-size: contain;
+    display: flex;
+    padding: 88px 20px 0;
+}
+
+/* 三列布局 */
+.cloumn {
+    flex: 3;
+}
+
+.cloumn:nth-child(2) {
+    flex: 4;
+}
+
+/* 通用面板样式 */
+/* 面板 : 边框背景图 */
+.panel {
+    /* 注意点1  :   一定要先设置border  如果是不规则图形需要单独设置border宽度 */
+    border: 30px solid skyblue;
+    border-width: 52px 40px 22px 125px;
+
+    border-image: url(../images/border.png) 50 40 22 125 stretch;
+
+    /* 注意点2   :   设置border之后,默认会将盒子撑开.
+            原因: 默认盒子是外扩盒子  = content + padding + border (border增加,盒子增加)
+            解决方案: 设置为內减盒子 = width    (border增加,内容自减) 
+     */
+
+    box-sizing: border-box;
+    /* 通常设置在初始化属性里面 */
+
+    /*注意点3:   : 內减盒子border增大后会影响内容的布局
+            解决方法: 嵌套一个子盒子,使用子绝父相定位解决  */
+    position: relative;
+}
+
+.inner {
+    position: absolute;
+    top: -52px;
+    right: -40px;
+    bottom: -22px;
+    left: -125px;
+    padding: 20px 30px;
+}
+
+/*            第一列              */
+
+/* 1. 数据概览 */
+.overview {
+    height: 110px;
+}
+
+.overview .item {
+    float: left;
+    width: 25%;
+    color: #fff;
+    text-align: center;
+}
+
+.overview .item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.overview .item span {
+    color: #2c9bfd;
+}
+
+
+/* 2. 故障监听 */
+.monitor {
+    height: 475px;
+    margin-top: 20PX;
+}
+
+.monitor .tab {
+    height: 20px;
+    color: #1950c4;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.monitor .tab span {
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+.monitor .tab span:nth-child(2) {
+    padding-left: 25px;
+    border-left: 2px solid #00f2f1;
+}
+
+/* 选中状态样式 */
+.monitor .tab span.active{
+    color: #fff;
+}
+
+/* 2.2 轮播图视图 */
+/* 头部固定区域 */
+
+
+.carousel-view .header {
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 15px -30px;
+    padding-left: 45px;
+}
+
+.carousel-view .header span {
+    /* 浮动会默认盒子变成行内块 */
+    float: left;
+    width: 25%;
+    color: #68D5F1;
+    line-height: 35px;
+    font-size: 15px;
+}
+
+.carousel-view .header span:nth-child(2) {
+    width: 50%;
+}
+
+/* 底部轮播滚动区域 */
+.lunbo{
+    height: 350px;
+    position: relative;
+    /* 超出部分不可见 */
+    overflow: hidden;
+}
+
+.carousel {
+    height: 350px;
+    position: absolute;
+    top: 0;
+}
+
+.carousel .row {
+    height: 35px;
+    color: #1850C3;
+    line-height: 35px;
+    margin: 0px -30px;
+    padding-left: 45px;
+    /* 子绝父相设置小点点位置 */
+    position: relative;
+    /* 加上小手 */
+    cursor: pointer;
+}
+
+/* 小点点位置 */
+.carousel .row i {
+    position: absolute;
+    left: 28px;
+    top: 10px;
+    font-size: 15px;
+    /* 默认隐藏 */
+    display: none;
+}
+
+.carousel .row span {
+    float: left;
+    width: 25%;
+    line-height: 35px;
+    font-size: 15px;
+}
+
+.carousel .row span:nth-child(2) {
+    width: 50%;
+    /* 不允许换行 */
+    white-space: nowrap;
+    /* 超出部分隐藏 */
+    overflow: hidden;
+    /* 超出部分省略号 */
+    text-overflow: ellipsis;
+}
+
+/* 选中状态row */
+.carousel .row.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.carousel .row.active span {
+    color: #00F1F1;
+}
+
+.carousel .row.active i {
+    display: block;
+}
+
+
+/* 3. 点位分布 */
+.point {
+    height: 335px;
+    margin-top: 20px;
+}
+
+.point h3 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.point .chart {
+    margin-top: 25px;
+    height: 238px;
+}
+
+.point .chart .pie {
+    float: left;
+    width: 60%;
+    height: 100%;
+    /* background-color: rgba(255, 255, 255, .1); */
+}
+
+.point .chart .data {
+    float: left;
+    width: 40%;
+    height: 100%;
+    background: url(../images/rect.png);
+    background-size: 100% 100%;
+}
+
+.point .chart .data .item {
+    width: 100%;
+    height: 50%;
+    color: #fff;
+    text-align: center;
+    padding-top: 35px;
+}
+
+.point .chart .data .item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.point .chart .data .item span {
+    color: #2c9bfd;
+}
+
+/*          第二列         */
+.map h3 {
+    color: #fff;
+    font-size: 18px;
+    padding: 35px 20px 15px;
+}
+
+.map .chart {
+    height: 532px;
+    margin-left: 20px;
+}
+
+/* 地图图表高度 */
+.map .chart .geo {
+    height: 100%;
+}
+
+.users {
+    height: 335px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.users h3 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.users .chart {
+    height: 238px;
+    margin-top: 20px;
+}
+
+.users .chart .bar {
+    width: 70%;
+    height: 100%;
+    float: left;
+    /* background-color: rgba(255, 255, 255, .1); */
+}
+
+.users .chart .data {
+    width: 30%;
+    height: 100%;
+    float: left;
+    background: url(../images/rect.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.users .chart .data .item {
+    width: 100%;
+    height: 50%;
+    color: #3774c5;
+    text-align: center;
+    /* 解决塌陷 */
+    overflow: hidden;
+}
+
+.users .chart .data h3 {
+    font-size: 18px;
+    color: #fff;
+    margin: 35px 0 10px;
+}
+
+/*          第三列         */
+
+/* 1.订单统计 */
+.order {
+    height: 145px;
+    margin-left: 20px;
+}
+
+.order .filter {
+    height: 20px;
+}
+
+.order .filter a {
+    display: inline-block;
+    width: 75px;
+    color: #1950c4;
+    text-align: center;
+    font-size: 16px;
+}
+
+.order .filter a:nth-child(n+2) {
+    border-left: 2px solid #00f2f1;
+}
+
+/* 选中的样式状态 */
+.order .filter a.active {
+    color: #fff;
+}
+
+.order .data .item {
+    float: left;
+    width: 50%;
+    color: #2b5a96;
+    padding-left: 20px;
+}
+
+.order .data .item h3 {
+    color: #fff;
+    font-size: 18px;
+    margin: 20px 0 10px;
+}
+
+/* 2.销售额统计 */
+.sales {
+    height: 243px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.sales .header span {
+    font-size: 18px;
+    color: #fff;
+    padding-right: 20px;
+    border-right: 2px solid #00F1F1;
+}
+
+.sales .header a {
+    margin-left: 20px;
+    color: #1950c4;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.sales .header a.active {
+    background-color: #4c9bfd;
+    color: #fff;
+}
+
+.sales .chart {
+    margin-top: 20px;
+    height: 155px;
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.sales .chart .line {
+    height: 100%;
+}
+
+/* 3. 渠道分布与一季度销售进度 */
+.warp {
+    height: 233px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.warp .channel,
+.warp .quarter {
+    float: left;
+    width: 48%;
+    height: 100%;
+}
+
+.warp .quarter {
+    margin-left: 4%;
+}
+
+/* 3.1 渠道分布 */
+.warp .channel h3 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.warp .channel .data {
+    margin-top: 20px;
+}
+
+.warp .channel .data h3 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.warp .channel .data .item {
+    float: left;
+    width: 50%;
+    color: #1850C3;
+    margin-top: 20px;
+}
+
+.warp .channel .data .item h3 {
+    color: #fff;
+    font-size: 18px;
+}
+
+/* 3.2 一季度销售进度 */
+.quarter h3 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.quarter .circle     {
+    height: 80px;
+    /* background-color: rgba(255, 255, 255, .1); */
+    margin: 10px 0;
+    /* 子绝父相定位 75% 水平垂直 */
+    position: relative;
+}
+
+.quarter .chart h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 自身继续左上角偏移宽高一半 */
+    transform: translate(-35%, -85%);
+}
+
+.quarter .data .item {
+    margin-top: 10px;
+    float: left;
+    width: 50%;
+    color: #1850C3;
+}
+
+.quarter .data .item h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* 4.全国热榜 */
+.hot {
+    height: 280px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.hot .state,
+.hot .province {
+    float: left;
+    height: 100%;
+    color: #1850C3;
+}
+
+.hot .state {
+    width: 30%;
+}
+
+.hot .province {
+    width: 70%;
+}
+
+/* 国家热榜 */
+.hot .state h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.hot .state ul li {
+    margin-top: 20px;
+}
+
+.hot .state ul li span {
+    font-size: 40px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.hot .state ul li span:nth-child(2) {
+    font-size: 14px;
+}
+
+.hot .province h3 {
+    font-size: 20px;
+    color: #fff;
+}
+
+.hot .province h3 span {
+    float: right;
+    color: #087fb0;
+    font-size: 14px;
+}
+
+.hot .province .cup {
+    float: left;
+    width: 50%;
+    margin-top: 20px;
+}
+
+.hot .province .cup li {
+    font-size: 12px;
+    color: #087fb0;
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
+}
+
+.hot .province .cup li span:nth-child(2) {
+    float: right;
+}
+
+/* 第一个ul鼠标移入状态 */
+.hot .province .cup:nth-child(2) li.active {
+    background-color: rgba(255, 255, 255, .1);
+    color: #00F1F1;
+}
+
+/* 第二个ul里面不同的样式: 背景颜色和文字颜色 */
+.hot .province .cup:nth-child(3) li {
+    color: #00F1F1;
+    background-color: rgba(255, 255, 255, .1);
+}
