@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1. 导包 -->
+    <link rel="stylesheet" href="./日期插件/test/jeDate-test.css">
+    <link rel="stylesheet" href="./日期插件/skin/jedate.css">
+    <script src="./日期插件/src/jedate.js"></script>
+</head>
+
+<body>
+    <!-- 2. 写html结构 -->
+    <div class="jeitem">
+        <label class="jelabel">点击图标</label>
+        <div class="jeinpbox">
+            <input type="text" class="jeinput" id="testico" placeholder="YYYY-MM-DD">
+            <div class="icons jebtns" onclick="jeDate('#testico',{trigger:false,format: 'YYYY-MM-DD'})"></div>
+        </div>
+    </div>
+
+    <script>
+            /* 3. 初始化 */
+            jeDate("#testico", {
+                trigger: "click",
+                format: "YYYY-MM-DD ",
+                isShow: true,
+                isinitVal: true,
+                festival:true,  
+            })
+    </script>
+</body>
+
+</html>

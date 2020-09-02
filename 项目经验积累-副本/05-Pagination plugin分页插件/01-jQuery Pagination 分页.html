@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1. 导包    ：  pagination插件是基于bootstrap封装的，所以先导入bootstrap-->
+    <script src="./bootstrap/js/jquery-1.12.4.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+
+    <script src="./jquery.twbsPagination.js"></script>
+</head>
+
+<body>
+    <!-- 2. 写html结构 -->
+    <ul id="pagination" class="pagination-sm"></ul>
+    <div> 
+        <button id="btn">筛选</button>
+    </div>
+    <script>
+        /* 3. 初始化 */
+        $('#pagination').twbsPagination({
+            first: "首页",
+            prev: "上一页",
+            next: "下一页",
+            last: "尾页",
+            totalPages: 35,
+            visiblePages: 7,
+            startPage: 1,
+            onPageClick: function (event, page) {
+                $('#page-content').text('Page ' + page);
+            }
+        });
+        $('#btn').click(function () {
+            let totalPage = Math.ceil(Math.random() * 100);
+            // (1)先销毁旧分页插件
+            $("#pagination").twbsPagination('destroy');
+            // (2)重新初始化
+            $('#pagination').twbsPagination({
+                first: "首页",
+                prev: "上一页",
+                next: "下一页",
+                last: "尾页",
+                totalPages: totalPage,//总页数
+                visiblePages: 7,//可见页
+                startPage: 1,//起始页
+                onPageClick: function (event, page) {
+                    $('#page-content').text('Page ' + page);
+                }
+            });
+        })
+
+    </script>
+</body>
+
+</html>

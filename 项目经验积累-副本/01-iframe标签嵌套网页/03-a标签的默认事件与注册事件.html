@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <a href="./index2.html" target="_blank"> 点我啊，可以跳转哟 </a>
+
+    <script>
+        /* 
+            1. a标签有一个默认跳转事件
+
+            2. a标签也可以注册点击事件  （两个事件： 默认事件 + 注册事件）
+
+            3. a标签的onclick与click方法区别
+                onclick() : 只能触发注册事件
+                click() : 同时触发默认事件 + 注册事件
+        */
+
+        document.querySelector('a').onclick = function () {// jq : $('a').click(function(){})
+            this.style.border = '10px solid red';
+        };
+
+        // onclick() : 只能触发注册事件    -> 等同于jq的$().click()
+
+        // click() : 触发默认事件 + 注册事件
+    </script>
+</body>
+
+</html>

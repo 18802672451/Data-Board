@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- bootstrap导包 -->
+    <script src="./bootstrap/js/jquery-1.12.4.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <button class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
+    <button class="btn btn-info" data-toggle="modal" data-target="#myModal">编辑</button>
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">文章类别管理</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">分类名称:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">分类描述：</label>
+                            <input class="form-control" id="message-text">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary btn-confirm">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        /* 文章类别 新增与编辑思路难点总结
+
+        1.模态框复用 ： 点击新增和编辑弹出是同一个模态框
+            * 解决方案： 是用行内自定义属性弹出模态框  data-toggle="modal" data-target="#myModal"
+            
+        2.新增和编辑业务逻辑不同
+            * 解决方案：给模态框注册弹出事件，通过e.relatedTarget获取模态框弹出触发源
+            2.1 新增
+                (1)模态框确认按钮 显示 ： 新增
+            2.2 编辑
+                (1)模态框确认按钮 显示：编辑
+                (2)传值：模态框显示当前编辑的分类信息
+
+        3.模态框按钮点击事件
+            3.1 取消 ： 表单清空，模态框消失
+            3.2 确认 ：
+                新增 ： 新增ajax  name slug
+                编辑 ： 编辑ajax  id name slug
+        */
+
+
+        //1.给模态框注册弹出事件
+        $('#myModal').on('show.bs.modal', function (e) {
+            //模态框事件触发源 ： 点击的是谁弹出的模态框 (原生DOM对象)
+            console.log(e.relatedTarget);
+
+            if( $(e.relatedTarget).text() == '新增' ){
+                //新增业务逻辑
+                //(1)修改模态框确认按钮为新增
+                $('.btn-confirm').text('新增');
+            }else{
+                //(2)修改模态框确认按钮为编辑
+                $('.btn-confirm').text('编辑');
+            }
+            
+        });
+
+        //2.模态框取消按钮 : 清空表单
+        $('.btn-cancel').click(function(){
+            //清空表单：  form表单.reset()
+            $('.modal-body>form')[0].reset();//原生DOM对象的方法
+        });
+
+        //3.模态框确认按钮： 发送ajax
+        $('.btn-confirm').click(function(){
+            if( $(this).text() == '新增' ){
+                alert('发送新增ajax');
+            } else{
+                alert('发送编辑ajax')
+            }
+        });
+    </script>
+</body>
+
+</html>

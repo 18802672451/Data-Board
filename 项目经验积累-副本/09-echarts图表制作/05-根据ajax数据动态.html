@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+</head>
+
+<body>
+    <!-- 2.写HTML -->
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+
+    <script>
+        /* ajax向服务器请求数据
+        (1) 应该在ajax响应数据后，加载图表
+        (2) 图表数据应该是全局变量
+         */
+
+        let date = []; //x轴日期数组
+        let data = []; //y轴数据数组
+
+        //(1).实例化ajax对象
+        let xhr = new XMLHttpRequest();
+        //(2).设置请求方法和地址
+        //get请求的数据直接添加在url的后面 格式是 url?key=value
+        xhr.open('get', 'http://localhost:8080/api/v1/admin/data/article');
+
+        xhr.setRequestHeader('Authorization', 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiYWRtaW4iLCJleHAiOjIyMDM2MzQxNjcsImlhdCI6MTU5ODgzNDE2N30.6TNsvD6mRyucHTHu3MDPdChTWiB1toEkAS4Cffwzn0P0Z-nHMMwLrHLf7IbZyMb2zBzWRvAPpuDqAR0RijX3lATxb0XbUmFy2QLaoqxlyjWbHYSXIJ7oxEDR6YTYzQ0EUJwrb_r4id231q5mgmd0cqHQaP2HOgY-Ng3ocgFpYEY')
+        //(3).发送请求
+        xhr.send();
+        //(4).注册回调函数
+        xhr.onload = function () {
+            //  console.log(xhr.responseText)
+            let backData = JSON.parse(xhr.responseText);
+            console.log(backData);
+            // 遍历backData添加到 x轴和y轴数组中
+            for (let i = 0; i < backData.date.length; i++) {
+                date.push(backData.date[i].date);
+                data.push(backData.date[i].count);
+            };
+            console.log(date, data);
+
+            // 开始加载图表
+            loadChart();
+        };
+
+        function loadChart() {
+            /* 3.js初始化 */
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    position: function (pt) {
+                        return [pt[0], '10%'];
+                    }
+                },
+                title: {
+                    left: 'center',
+                    text: '月新增文章数',
+                },
+                //右上角工具栏
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: { readOnly: false },
+                        magicType: { type: ['line', 'bar'] },
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+
+                legend: {
+                    data: ['新增文章'],
+                    top: 30
+                },
+
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: date
+                },
+                yAxis: {
+                    type: 'value',
+                    boundaryGap: [0, '100%']
+                },
+
+
+                series: [
+                    {
+                        name: '新增文章',
+                        type: 'line',
+                        smooth: true,
+                        symbol: 'emptyCircle',
+                        symbolSize: 8,
+                        sampling: 'average',
+                        //线条颜色
+                        itemStyle: {
+                            color: '#ff8100'
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: '#ffdfbc'
+                            }, {
+                                offset: 1,
+                                color: '#fff'
+                            }])
+                        },
+                        data: data
+                    }
+                ]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        }
+
+    </script>
+
+</body>
+
+</html>
