@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大事件-后台首页</title>
+    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="./libs/jquery-1.12.4.min.js"></script>
+    <!-- 导入bootstrap的js文件 -->
+    <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="sider">
+        <a href="#" class="logo"><img src="images/logo02.png" alt="logo"></a>
+        <div class="user_info">
+            <img src="images/2.jpg" alt="person">
+            <span>欢迎&nbsp;&nbsp;李宗盛</span>
+            <b>管理员</b>
+        </div>
+        <!-- 左侧导航栏 -->
+        <div class="menu">
+            <div class="level01 active"><a href="./main_count.html" target="myframe"><i
+                        class="iconfont icon-yidiandiantubiao04"></i><span>首页</span></a></div>
+            <div class="level01"><a href="#"><i class="iconfont icon-icon-article"></i><span>文章管理</span><b
+                        class="iconfont icon-arrowdownl"></b></a></div>
+            <ul class="level02">
+                <li><a href="./article_list.html" target="myframe"><i
+                            class="iconfont icon-previewright"></i><span>文章列表</span></a></li>
+                <li><a href="./article_release.html" target="myframe"><i
+                            class="iconfont icon-previewright"></i><span>发表文章</span></a></li>
+                <li><a href="./article_category.html" target="myframe"><i
+                            class="iconfont icon-previewright"></i><span>文章类别管理</span></a>
+                </li>
+            </ul>
+
+            <div class="level01"><a href="./comment_list.html" target="myframe"><i
+                        class="iconfont icon-comment"></i><span>评论管理</span></a></div>
+            <div class="level01" id="user"><a href="./user.html" target="myframe"><i
+                        class="iconfont icon-user"></i><span>个人中心</span></a></div>
+        </div>
+        <!-- 顶部栏 -->
+        <div class="header_bar">
+            <div class="user_center_link">
+                <a href="./user.html" target="myframe">个人中心</a>
+                <img src="images/2.jpg" alt="person">
+                <a href="javascript:void(0)" class="logout"><i class="iconfont icon-tuichu"></i> 退出</a>
+            </div>
+        </div>
+        <!-- 右侧主体内容 -->
+        <div class="main" id="main_body">
+            <iframe src="./main_count.html" frameborder="0" name="myframe" style="width: 100%;height: 100%;"></iframe>
+        </div>
+    </div>
+
+    <!-- 导入网络层 -->
+    <script src="./libs/http.js"></script>
+    <script>
+        //入口函数
+
+        //1.加载个人信息
+        $.ajax({
+            url: BigNew.user_info,
+            type: 'get',
+            dataType: 'json',
+            success: function (backData) {
+                console.log(backData);
+                //渲染数据
+                $('.user_info>img').attr('src', backData.data.userPic);
+                $('.user_info>span').text(backData.data.nickname);
+                $('.user_center_link>img').attr('src', backData.data.userPic);
+
+
+            }
+        });
+
+        // //(1).实例化ajax对象
+        // let xhr = new XMLHttpRequest();
+        // //(2).设置请求方法和地址
+        // //get请求的数据直接添加在url的后面 格式是 url?key=value
+        // xhr.open('get', 'http://localhost:8080/api/v1/admin/user/info');
+
+        // /* 在请求头中发送token */
+        // xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+
+        // //(3).发送请求
+        // xhr.send();
+        // //(4).注册回调函数
+        // xhr.onload = function() {
+        //     console.log(xhr.responseText)
+        // };
+
+        /* 2.退出登录 */
+        $('.logout').click(function () {
+            //清除本地token
+            localStorage.removeItem('token');
+            //跳转登录页
+            window.location.href = './login.html';
+        });
+
+
+        /* 2.侧边栏 */
+
+        //2.1 一级菜单点击事件
+        $('.level01').click(function () {
+            //1.排他思想修改样式
+            $(this).addClass('active').siblings().removeClass('active');
+            //2.如果点击的是文章管理，还需要展开二级菜单
+            if ($(this).index() == 1) {
+                //(1)二级菜单下滑
+                $('.level02').slideToggle();
+                //(2)右侧箭头旋转
+                $(this).find('b').toggleClass('rotate0');
+                //(3)默认选中第一个二级菜单
+                /*特殊知识点： a标签有两种事件：  (1)默认跳转事件  (2)注册事件 
+
+                a. $().click()  : 这是jq对象的click方法，只能触发 注册事件
+                b. $()[0] : 将jq对象转成DOM对象， 为了可以调用DOM原生的语法
+                c. $()[0].click() : 这是dom原生对象的click()方法
+                    * a标签原生的语法，既可以调用 onclick()  也可以调用click()
+                    * onclick() 只能触发注册事件
+                    * click() 可以触发默认事件 + 注册事件
+                 */
+                $('.level02>li:eq(0) a')[0].click();
+
+            }else{
+                //取消所有的二级菜单高亮状态
+                $('.level02>li').removeClass('active');
+            }
+        });
+
+
+        //2.2 二级菜单点击事件
+        $('.level02>li').click(function () {
+            //1.排他思想修改样式
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+    </script>
+</body>
+
+</html>

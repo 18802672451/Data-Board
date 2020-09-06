@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章列表</title>
+    <link rel="Shortcut icon" href="./baidu.png">
+    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="./libs/jquery-1.12.4.min.js"></script>
+    <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="common_title">
+            文章类别管理
+        </div>
+        <div class="container-fluid common_con">
+            <table class="table table-striped table-bordered table-hover mp20 category_table">
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>Slug</th>
+                        <th class="text-center" width="100">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>奇趣事</td>
+                        <td>funny</td>
+                        <td class="text-center">
+                            <a href="javascript:void(0);" data-toggle="modal" class=" btn btn-info btn-xs">编辑</a>
+                            <a href="javascript:void(0);" class="btn btn-danger btn-xs">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-center">
+                            <a href="javascript:void(0)" class="btn btn-success" id="xinzengfenlei"
+                            data-toggle="modal" data-target="#myModal">新增分类</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">文章类别管理</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">分类名称:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">分类描述:</label>
+                            <input class="form-control" id="message-text">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary btn-confirm">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- 导入模板引擎js -->
+     <script src="./libs/template-web.js"></script>
+    <!-- 模板引擎  文章类别 -->
+    <script id="cat_list" type="text/html">
+        {{each data v}}
+        <tr>
+            <td>{{ v.name }}</td>
+            <td>{{ v.slug }}</td>
+            <td class="text-center">
+                <a data-id="{{ v.id }}" href="javascript:void(0);" data-toggle="modal"
+                    class=" btn btn-info btn-xs"  data-toggle="modal" data-target="#myModal">编辑</a>
+                <a data-id="{{ v.id }}" href="javascript:void(0);" class="btn btn-danger btn-xs btn-delete">删除</a>
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    
+    <!-- 导入网络中间层 -->
+    <script src="./libs/http.js"></script>
+    <script>
+        // 入口函数
+        $(function () {
+            /* 1. 页面一加载：ajax请求所有文章分类 */
+            $.ajax({
+                url: BigNew.category_list,
+                type: 'get',
+                dataType: 'json',
+                success: function (backData) {
+                    console.log(backData);
+                    // 渲染页面
+                    $('table>tbody').html($(template('cat_list', backData)))
+                }
+            });
+            /* 文章分类 新增与编辑思路难点
+            1. 模态框复用： 点击新增和编辑弹出是同一个模态框
+            2.新增和编辑业务逻辑不同
+                2.1 新增
+                    (1)模态框确认按钮   显示    ：  新增
+                    (2)传值：   模态框显示当前编辑的分类信息
+            3.模态框按钮点击事件
+                3.1 取消 ： 表单清空，模态框消失
+                3.2 确认 ： 
+                    新增 ：新增ajax name slug
+                    编辑 ：编辑ajax name slug id
+            */
+            /* 1. 模态框复用：点击新增和编辑弹出是同一个模态框 */
+            $('#myModal').on('show.bs.modal', function (e) {
+                //模态框事件触发源 ： 点击的是谁弹出的模态框 (原生DOM对象)
+                console.log(e.relatedTarget);
+                /* 2.新增和编辑业务逻辑 */
+                if($(e.relatedTarget).text() == '新增分类'){
+                    $('.btn-confirm').text('新增');
+                }else{
+                    $('.btn-confirm').text('编辑');
+                    // 传值 显示当前编辑的分类信息
+                    // $('#recipient-name').parent().prev().prev();//名称
+                    // $('#message-text').parent().prev();// 描述
+                    $('#recipient-name').val($(e.relatedTarget).parent().prev().prev().text());
+                    $('#message-text').val($(e.relatedTarget).parent().prev().text());
+
+                    // (3) 传值： 将当前点击的编辑按钮的data-id 传递给模态框的编辑按钮
+                    console.log($(e.relatedTarget).attr('data-id'));
+                    $('.btn-confirm').attr('data-id',$(e.relatedTarget).attr('data-id'));
+                }
+            })
+            /* 3.1 模态框取消按钮 */
+            $('.btn-cancel').click(function(){
+                // reset() 表单重置
+                $('.modal-body>form:eq(0)')[0].reset();
+            })
+            /* 3.2 模态框确认按钮 */
+            $('.btn-confirm').click(function(){
+                if( $(this).text() == '新增'){
+                    $.ajax({
+                        url:BigNew.category_add,
+                        type:'post',
+                        dataType:'json',
+                        data:{
+                            name: $('#recipient-name').val(),
+                            slug: $('#message-text').val()
+                        },
+                        success: function(backData){
+                            console.log(backData);
+                            if(backData.code == 201){
+                                alert('创建成功');
+                                // 重新刷新页面
+                                window.location.reload();
+                            }
+                        }
+                    });
+                }else{//编辑
+                    $.ajax({
+                        url:BigNew.category_edit,
+                        type:'post',
+                        dataType:'json',
+                        data:{
+                            id: $(this).attr('data-id'),
+                            name: $('#recipient-name').val(),
+                            slug: $('#message-text').val()
+                        },
+                        success: function(backData){
+                            console.log(backData);
+                            if (backData.code == 200) {
+                                alert('修改成功');
+                                // 重新加载页面
+                                window.location.reload();
+                            }
+                        }
+                    });
+                }
+            })
+            
+            /* 4. 删除分类
+            注意点：删除按钮ajax动态增加，需要注册委托事件
+            */
+            $('table>tbody').on('click','.btn-delete',function(){
+                // (1) 获取当前点击的按钮的data-id
+                let id = $(this).attr('data-id');
+                // (2) ajax发送请求
+                $.ajax({
+                    url:BigNew.category_delete,
+                    type:'post',
+                    dataType:'json',
+                    data:{id:id},
+                    success: function(backData){
+                        console.log(backData);
+                        if( backData.code == 204 ){
+                            alert('删除成功');
+                            //刷新页面
+                            window.location.reload();
+                        }
+                    }
+                });
+           })
+        })
+    </script>
+
+</html>
